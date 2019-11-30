@@ -4,7 +4,7 @@ export default class Layout extends Component{
     render(){
         return(
             <Fragment>
-                <TabBar/>
+                <TabBar path={this.props.path}/>
                 {/* 内容区 */}
                 {this.props.children}
             </Fragment>

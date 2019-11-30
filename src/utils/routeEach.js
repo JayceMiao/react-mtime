@@ -9,7 +9,7 @@ export default (routes)=>{
         if(route.path !== "/login" && route.meta.requiredAuth){
             if(Cookies.get("token")){
                 if(route.meta.flag){
-                    return (<Layout>
+                    return (<Layout path={route.path}>
                                 <route.component />
                             </Layout>)
                 }else{
@@ -20,7 +20,7 @@ export default (routes)=>{
             }
         }else{
             if(route.meta.flag){
-                return (<Layout>
+                return (<Layout path={route.path}>
                             <route.component />
                         </Layout>)
             }else{

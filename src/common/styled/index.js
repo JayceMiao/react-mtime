@@ -6,6 +6,6 @@ export const PageContainer = styled.div`
     top:0;
     bottom:0;
     right:0;
-    padding-top:1rem;
+    padding-top:.433rem;
 
 `
