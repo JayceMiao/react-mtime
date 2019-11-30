@@ -5,39 +5,39 @@ import Layout from '../layout'
 
 export default (routes)=>{
 
+    function isLayout(route){
+        if(route.meta.flag){
+            return(
+                <Layout path={route.path} >
+                    <route.component/>
+                </Layout>
+            )
+        }else{
+            return <route.component/>
+        }
+    }
+
     function isLogin(route){
         if(route.path !== "/login" && route.meta.requiredAuth){
             if(Cookies.get("token")){
-                if(route.meta.flag){
-                    return (<Layout path={route.path}>
-                                <route.component />
-                            </Layout>)
-                }else{
-                    return <route.component />;
-                }
+                return isLayout(route);
             }else{
                 return <Redirect to={{pathname:"/login",params:{from:route.path}}} />
             }
         }else{
-            if(route.meta.flag){
-                return (<Layout path={route.path}>
-                            <route.component />
-                        </Layout>)
-            }else{
-                return <route.component />;
-            }
+            return isLayout(route);
         }
     }
 
 
-    function childrenMap(childrenNodes){
-        return <Route path={childrenNodes.path} render={()=>{
+    function childrenMap(childNodes){
+        return <Route path={childNodes.path} render={()=>{
             return (
                 <Fragment>
-                    <Route component={childrenNodes.component} />
+                    <Route component={childNodes.component} />
                     <Switch>
                         {
-                            childrenNodes.children.map((child)=>{
+                            childNodes.children.map((child)=>{
                                 if(child.children){
                                     return childrenMap(child);
                                 }else{
@@ -47,7 +47,7 @@ export default (routes)=>{
                                 }
                             })
                         }
-                        <Redirect from={childrenNodes.path} to={childrenNodes.children[0].path}/>
+                        <Redirect from={childNodes.path} to={childNodes.children[0].path}/>
                     </Switch>
                 </Fragment>
             )

@@ -12,10 +12,13 @@ class TabBar extends Component{
                 <div className="top">
                     <ul>
                         <li></li>
-                        <li>首页</li>
-                        <li>购票</li>
-                        <li>商城</li>
-                        <li>发现</li>
+                        {
+                            TabBarRoute.map((item)=>(
+                                <li key={item.path} onClick={this.handleTo.bind(this,item.path)} className={path ===item.path?'active':""}>
+                                    {item.text}
+                                </li>
+                            ))
+                        }
                         <li></li>
                     </ul>
                 </div>

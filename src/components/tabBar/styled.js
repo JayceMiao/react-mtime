@@ -16,7 +16,10 @@ export const TabBarContainer = styled.div`
         width: 100%;
         height: 100%;
         .active{
-            color:#c33;
+            color:#fff;
+            font-weight:bolder;
+            border-bottom:2px solid #fff;
+            box-sizing:border-box;
         }
         li{
             width: .467rem;

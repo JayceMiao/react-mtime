@@ -16,7 +16,7 @@ export const LoadingContainer = styled.div`
         border-right-color: hsl(42,100%,51%);
         border-radius: 50%;
         transform: rotate(45deg);
-        margin: 30px auto;
+        margin: 50% auto;
     }
     p {
         display: inline-block;
