@@ -1,0 +1,1 @@
+export const ticketAsyncType = "TICKET_ASYNC_TYPE"
